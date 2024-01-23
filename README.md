@@ -24,6 +24,7 @@ symfony console doctrine:migrations:migrate
 ```
 
 Generar usuario:
+
 Correr el siguiente SQL en la base de datos y reemplazar el campo password por el generado mediante la consola.
 ```sql
 INSERT INTO `user` (`id`, `username`, `roles`, `password`) VALUES (NULL, 'admin', '[\"ROLE_ADMIN\"]', '$2y$13$Jwd2ORKLPddJ.HfgPlnT8.R2TZpB8DrHgV3.CmvgtfTke.bffrmIu');
@@ -39,6 +40,7 @@ symfony server:start -d
 ```
 
 Autenticarse:
+
 Realizar un POST a la url "https://127.0.0.1:8000/api/login_check" con la siguiente estructura de JSON:
 ```json
 {
@@ -48,6 +50,7 @@ Realizar un POST a la url "https://127.0.0.1:8000/api/login_check" con la siguie
 ```
 
 Consultar la API RESTful:
+
 Ir a "https://127.0.0.1:8000/api/doc"
 Ingresar en el botón de "Authorize" el token obtenido al autenticarse.
 Si realizó todos los pasos correctamente podrá consultar la API RESTful por el periodo de una hora, luego de esto deberá volver a generar otro token.
