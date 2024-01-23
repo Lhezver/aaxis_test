@@ -1,0 +1,30 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: Aaxis Test
+            description: Basic Technical Test for PHP Symfony Developer
+            version: 1.0.0
+
+        components:
+            schemas:
+                Product:
+                    type: object
+                    properties:
+                        id: { type: integer, example: 1 }
+                        sku: { type: string, example: 'a' }
+                        productName: { type: string, example: 'a' }
+                        description: { type: string, example: 'a' }
+                        created_at: { type: string, example: '2024-01-23T08:03:14-03:00' }
+                        update_at: { type: string, example: '2024-01-23T08:03:14-03:00' }
+
+                ProductPersist:
+                    type: object
+                    properties:
+                        sku: { type: string, example: 'a' }
+                        productName: { type: string, example: 'a' }
+                        description: { type: string, example: 'a' }
+
+    areas: # to filter documented areas
+        path_patterns:
+            - ^/api(?!/doc$) # Accepts routes under /api except /api/doc
+    

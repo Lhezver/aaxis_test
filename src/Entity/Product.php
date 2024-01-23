@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
-use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

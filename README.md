@@ -1,6 +1,6 @@
 # Aaxis Test
 
-![](https://img.shields.io/badge/PHP-7.4.33-777BB4?logo=php) ![](https://img.shields.io/badge/MariaDB-10.4.27-003545?logo=mariadb) ![](https://img.shields.io/badge/Symfony-5.4.28-000000?logo=symfony)
+![](https://img.shields.io/badge/PHP-7.4.33-777BB4?logo=php) ![](https://img.shields.io/badge/MariaDB-10.4.27-003545?logo=mariadb) ![](https://img.shields.io/badge/Symfony-5.4.34-000000?logo=symfony)
 
 ## Instalación
 
