@@ -33,6 +33,14 @@ class ProductController extends AbstractController
      *        @OA\Items(ref="#/components/schemas/Product"))
      *     )
      * )
+     * @OA\Response(
+     *     response=500,
+     *     description="Internal Server Error",
+     *     @OA\JsonContent(
+     *         type="object",
+     *         @OA\Property(property="error", type="string", example="Exception: ...")
+     *     )
+     * )
      */
     public function index(ProductRepository $productRepository, SerializerInterface $serializer): JsonResponse
     {
@@ -49,6 +57,30 @@ class ProductController extends AbstractController
     /**
      * @Route("/new", name="app_product_new", methods={"POST"})
      * @OA\RequestBody(@OA\JsonContent(type="array",@OA\Items(ref="#/components/schemas/ProductPersist"))))
+     * @OA\Response(
+     *     response=200,
+     *     description="OK",
+     *     @OA\JsonContent(
+     *         type="object",
+     *         @OA\Property(property="message", type="string", example="Products created successfully")
+     *     )
+     * )
+     * @OA\Response(
+     *     response=400,
+     *     description="Bad Request",
+     *     @OA\JsonContent(
+     *         type="object",
+     *         @OA\Property(property="error", type="string", example="Check the product with the SKU: A")
+     *     )
+     * )
+     * @OA\Response(
+     *     response=500,
+     *     description="Internal Server Error",
+     *     @OA\JsonContent(
+     *         type="object",
+     *         @OA\Property(property="error", type="string", example="Exception: ...")
+     *     )
+     * )
      */
     public function new(Request $request, SerializerInterface $serializer, EntityManagerInterface $entityManager): JsonResponse
     {
@@ -65,7 +97,7 @@ class ProductController extends AbstractController
         } catch (PartialDenormalizationException $e) {
             preg_match('/\[(\d+)\]/', $e->getErrors()[0]->getPath(), $coincidencias);
             $data = json_decode($jsonData, true);
-            return new JsonResponse(['error' => 'Not Normalizable Value Exception in SKU - ' . $data[(int)$coincidencias[1]]['sku']], JsonResponse::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error' => 'Check the product with the SKU: ' . $data[(int)$coincidencias[1]]['sku']], JsonResponse::HTTP_BAD_REQUEST);
         } catch (\Exception $e) {
             return new JsonResponse(['error' => 'Exception: ' . $e->getMessage()], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
@@ -74,6 +106,38 @@ class ProductController extends AbstractController
     /**
      * @Route("/edit", name="app_product_edit", methods={"PUT"})
      * @OA\RequestBody(@OA\JsonContent(type="array",@OA\Items(ref="#/components/schemas/ProductPersist"))))
+     * @OA\Response(
+     *     response=200,
+     *     description="OK",
+     *     @OA\JsonContent(
+     *         type="object",
+     *         @OA\Property(property="message", type="string", example="Products created successfully")
+     *     )
+     * )
+     * @OA\Response(
+     *     response=400,
+     *     description="Bad Request",
+     *     @OA\JsonContent(
+     *         type="object",
+     *         @OA\Property(property="error", type="string", example="Check the product with the SKU: A")
+     *     )
+     * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Not Found",
+     *     @OA\JsonContent(
+     *         type="object",
+     *         @OA\Property(property="error", type="string", example="The product with the SKU was not found: X")
+     *     )
+     * )
+     * @OA\Response(
+     *     response=500,
+     *     description="Internal Server Error",
+     *     @OA\JsonContent(
+     *         type="object",
+     *         @OA\Property(property="error", type="string", example="Exception: ...")
+     *     )
+     * )
      */
     public function edit(Request $request, SerializerInterface $serializer, ProductRepository $productRepository): JsonResponse
     {
@@ -84,7 +148,7 @@ class ProductController extends AbstractController
             foreach ($products as $product) {
                 $myProduct = $productRepository->findOneBy(['sku' => $product->getSku()]);
                 if ($myProduct == null) {
-                    return new JsonResponse(['error' => 'Product not found in SKU - ' . $product->getSku()], JsonResponse::HTTP_NOT_FOUND);
+                    return new JsonResponse(['error' => 'The product with the SKU was not found: ' . $product->getSku()], JsonResponse::HTTP_NOT_FOUND);
                 }
 
                 $myProduct->setProductName($product->getProductName());
@@ -99,7 +163,7 @@ class ProductController extends AbstractController
         } catch (PartialDenormalizationException $e) {
             preg_match('/\[(\d+)\]/', $e->getErrors()[0]->getPath(), $coincidencias);
             $data = json_decode($jsonData, true);
-            return new JsonResponse(['error' => 'Not Normalizable Value Exception in SKU - ' . $data[(int)$coincidencias[1]]['sku']], JsonResponse::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error' => 'Check the product with the SKU: ' . $data[(int)$coincidencias[1]]['sku']], JsonResponse::HTTP_BAD_REQUEST);
         } catch (\Exception $e) {
             return new JsonResponse(['error' => 'Exception: ' . $e->getMessage()], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
