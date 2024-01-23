@@ -34,6 +34,15 @@ class ProductController extends AbstractController
      *     )
      * )
      * @OA\Response(
+     *     response=401,
+     *     description="Unauthorized",
+     *     @OA\JsonContent(
+     *         type="object",
+     *         @OA\Property(property="code", type="integer", example=401),
+     *         @OA\Property(property="message", type="string", example="JWT Token not found")
+     *     )
+     * )
+     * @OA\Response(
      *     response=500,
      *     description="Internal Server Error",
      *     @OA\JsonContent(
@@ -71,6 +80,15 @@ class ProductController extends AbstractController
      *     @OA\JsonContent(
      *         type="object",
      *         @OA\Property(property="error", type="string", example="Check the product with the SKU: A")
+     *     )
+     * )
+     * @OA\Response(
+     *     response=401,
+     *     description="Unauthorized",
+     *     @OA\JsonContent(
+     *         type="object",
+     *         @OA\Property(property="code", type="integer", example=401),
+     *         @OA\Property(property="message", type="string", example="JWT Token not found")
      *     )
      * )
      * @OA\Response(
@@ -120,6 +138,15 @@ class ProductController extends AbstractController
      *     @OA\JsonContent(
      *         type="object",
      *         @OA\Property(property="error", type="string", example="Check the product with the SKU: A")
+     *     )
+     * )
+     * @OA\Response(
+     *     response=401,
+     *     description="Unauthorized",
+     *     @OA\JsonContent(
+     *         type="object",
+     *         @OA\Property(property="code", type="integer", example=401),
+     *         @OA\Property(property="message", type="string", example="JWT Token not found")
      *     )
      * )
      * @OA\Response(

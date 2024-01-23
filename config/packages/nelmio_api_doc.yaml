@@ -6,6 +6,11 @@ nelmio_api_doc:
             version: 1.0.0
 
         components:
+            securitySchemes:
+                Bearer:
+                    type: http
+                    scheme: bearer
+                    bearerFormat: JWT
             schemas:
                 Product:
                     type: object
@@ -23,6 +28,9 @@ nelmio_api_doc:
                         sku: { type: string, example: 'a' }
                         productName: { type: string, example: 'a' }
                         description: { type: string, example: 'a' }
+        
+        security:
+            - Bearer: []
 
     areas: # to filter documented areas
         path_patterns:
