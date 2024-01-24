@@ -21,6 +21,7 @@ Abrir una terminal dentro del directorio aaxis_test y ejecutar los siguientes co
 composer install
 symfony console doctrine:database:create
 symfony console doctrine:migrations:migrate
+symfony console lexik:jwt:generate-keypair
 ```
 
 Generar usuario:
