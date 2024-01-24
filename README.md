@@ -26,11 +26,11 @@ symfony console lexik:jwt:generate-keypair
 
 Generar usuario:
 
-Correr el siguiente SQL en la base de datos y reemplazar el campo password por el generado mediante la consola.
+Correr el siguiente SQL en la base de datos y reemplazar el campo password por el generado mediante la consola*.
 ```sql
 INSERT INTO public."user" (id, username, roles, "password") VALUES (1, 'admin', '["ROLE_USER"]', '$2y$13$3huKqGWIByeJyUiv5qO9quX5DowMbPG4jcWUU/3rh9dUmmaRkVDA2');
 ```
-Generar contraseña:
+*Generar contraseña:
 ```console
 symfony console security:hash-password
 ```
