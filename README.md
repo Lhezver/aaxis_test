@@ -1,7 +1,7 @@
 
 # Aaxis Test
 
-![](https://img.shields.io/badge/PHP-7.4.33-777BB4?logo=php) ![](https://img.shields.io/badge/MariaDB-10.4.27-003545?logo=mariadb) ![](https://img.shields.io/badge/Symfony-5.4.34-000000?logo=symfony)
+![](https://img.shields.io/badge/PHP-7.4.33-777BB4?logo=php) ![](https://img.shields.io/badge/PostgreSQL-16.1.1-679CC7?logo=postgresql) ![](https://img.shields.io/badge/Symfony-5.4.34-000000?logo=symfony)
 
 ### Precondiciones
 
@@ -28,7 +28,7 @@ Generar usuario:
 
 Correr el siguiente SQL en la base de datos y reemplazar el campo password por el generado mediante la consola.
 ```sql
-INSERT INTO `user` (`id`, `username`, `roles`, `password`) VALUES (NULL, 'admin', '[\"ROLE_ADMIN\"]', '$2y$13$Jwd2ORKLPddJ.HfgPlnT8.R2TZpB8DrHgV3.CmvgtfTke.bffrmIu');
+INSERT INTO public."user" (id, username, roles, "password") VALUES (1, 'admin', '["ROLE_USER"]', '$2y$13$3huKqGWIByeJyUiv5qO9quX5DowMbPG4jcWUU/3rh9dUmmaRkVDA2');
 ```
 Generar contraseña:
 ```console
