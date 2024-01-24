@@ -54,4 +54,4 @@ Consultar la API RESTful:
 
 Ir a "https://127.0.0.1:8000/api/doc"
 Ingresar en el botón de "Authorize" el token obtenido al autenticarse.
-Si realizó todos los pasos correctamente podrá consultar la API RESTful por el periodo de una hora, luego de esto deberá volver a generar otro token.
+Si realizó todos los pasos correctamente podrá consultar la API RESTful por el periodo de una hora o hasta que apague el serviror, luego de esto deberá volver a generar otro token.
