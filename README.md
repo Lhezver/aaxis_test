@@ -5,7 +5,7 @@
 
 ### Precondiciones
 
-Tener instalado y configuradas las variables de entorno de PHP, Composer, MySQL, OpenSSL y Symfony CLI
+Tener instalado y configuradas las variables de entorno de PHP, Composer, PostgreSQL, OpenSSL y Symfony CLI
 
 ## Instalación
 
